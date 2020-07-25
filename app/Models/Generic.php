@@ -59,13 +59,26 @@ class Generic extends Model
     } 
 
     function findByNameIceAndFireAPI($condition_array)
-	{
-        $url = 'https://www.anapioficeandfire.com/api/books?name='.$condition_array;
-        $response = file_get_contents($url);
+	{ 
+        $url = 'https://www.anapioficeandfire.com/api/books?name='.urlencode($condition_array);
 
-        //decode the response
-        $data = json_decode($response,true);
-		return $data;
+        $ch = curl_init(); 
+
+        // set url 
+        curl_setopt($ch, CURLOPT_URL, $url); 
+
+        //return the transfer as a string 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
+
+        // $output contains the output string 
+        $output = curl_exec($ch); 
+
+        // close curl resource to free up system resources 
+        curl_close($ch);      
+
+        $data = json_decode($output);
+
+        return $data;
     }
 }
 

@@ -155,18 +155,15 @@ class Books extends ResourceController
         
         $search = $this->request->getGet();
 
-        if($search === null || !isset($search['search']) ){
+        if($search === null || !isset($search['name']) ){
             $data = $GenericModel->getIceAndFireAPI();
         }
         else{
 
            
             $search = $this->request->getGet();
-            $data_where = array(
-                'name'          => $search['nameOfABook']
-            );
             
-            $data= $GenericModel->findByNameIceAndFireAPI($data_where);
+            $data= $GenericModel->findByNameIceAndFireAPI($search['name']); 
         }
         if($data === false)
         {
