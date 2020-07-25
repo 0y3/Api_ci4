@@ -1,64 +1,99 @@
-# CodeIgniter 4 Application Starter
+# API Development Project Codeigniter 4
 
-## What is CodeIgniter?
+Implementation a REST API that calls from local server and external API service to get information about books
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
-More information can be found at the [official site](http://codeigniter.com).
+## Getting Started
 
-This repository holds a composer-installable app starter.
-It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+### Prerequisites
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
+What things you need to install the software and how to install them
 
-## Installation & updates
+```
+install 
+ wamp or 
+ xamp or 
+ mamp 
+ 
+ &
+ Postman 
+ 
+software in your system
+```
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Installing
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+A step by step series of examples that tell you how to get a development env running
 
-## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+```
+1. Clone or download the project to your local system
+```
+```
+2. Creat a database name"ci4_api" in your system database
+```
+```
+3. Import the database "ci4_api.sql" in the db folder
+```
+```
+4. Run the project using comand line int the root dir of the project 
+```
+```
+5. run code:  php spark serve
+```
+```
+6. Browse the link "http://localhost:8080" 
+```
 
-## Important Change with index.php
+And 
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+```
+7. http://localhost:8080/api/v1/books
+```
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+End with an example of getting some data out of the system or using it for a little demo
 
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
+## Running the tests
 
-## Repository Management
+Explain how to run the automated tests for this system
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### Running the Project
 
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
+On your project dir,open your Terminal 
+Run the code
+```
+php spark serve
+```
 
-## Server Requirements
+### Break down into end to end tests And coding style tests
 
-PHP version 7.2 or higher is required, with the following extensions installed: 
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+```
+READ & SEARCH
+GET Request : http://localhost:8080/api/v1/books
+              http://localhost:8080/api/v1/books?search=Books
+              http://localhost:8080/api/v1/books/1
+              http://localhost:8080/api/externalBook
+              http://localhost:8080/api/externalBook?nameOfABook=A Storm of Swords
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+CREATE
+Post Request : http://localhost:8080/api/v1/books
+Post Required Data *name,isbn,authors,number_of_pages,publisher,publisher,country,release_date*
 
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+UPDATE
+PUT Request : http://localhost:8080/api/v1/books/1
+PUT Data *name,isbn,authors,number_of_pages,publisher,publisher,country,release_date*
+
+DELETE
+Delete Request : http://localhost:8080/api/v1/books/1
+
+```
+
+## Built With
+
+* [Codeigniter 4 ](https://codeigniter4.github.io/userguide/) - The web framework used
+* [MySql](https://maven.apache.org/) - Database
+* [Ice And Fire API](https://anapioficeandfire.com/Documentation) - Used to generate Rest Api Feeds
+
+
